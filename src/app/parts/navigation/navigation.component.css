@@ -1,0 +1,18 @@
+nav{
+    background: #64bdd3;
+  background: 
+    -webkit-linear-gradient(to right, #e73c58, #28a96b);
+  background: 
+    linear-gradient(to right, #6c76aa, #2a7dc0);
+  margin: auto;
+  /* box-shadow: 
+    0px 2px 10px rgba(9, 9, 9, 0.2), 
+    0px 10px 20px rgba(9, 9, 9, 0.3), 
+    0px 30px 60px 1px rgba(17, 17, 17, 0.5); */
+  border-radius: 5px;
+  padding: auto;
+}
+.navbar-nav .nav-link {
+  /* margin-right: 1px; */
+  margin-left: 25px;
+}

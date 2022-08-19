@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+    <a class="navbar-brand" [routerLink]="root">
+        <img src="/assets/shop_home.jpg" width="13%" class="d-inline-block align-top mr-3" alt="">
+        <i style="font-size:20px" style="color: rgb(244, 240, 240)"><b>Shop For Home</b></i> 
+
+        <!-- <i style="font-size:20px"></i> -->
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+        <div class="navbar-nav" *ngIf="!currentUser || currentUser.role == Role.Customer">
+
+            <a class="nav-item nav-link "
+               routerLink="/category/0">
+               <i style="font-size:15px"><p style="color: rgb(244, 240, 240)"><b>Idols & Figurines</b></p></i> 
+            </a>
+            <a class="nav-item nav-link"
+               routerLink="/category/1">
+               <i style="font-size:15px"><p style="color: rgb(244, 240, 240)"><b>Wall Sculptures</b></p></i> 
+            </a>
+            <a class="nav-item nav-link "
+               routerLink="/category/2">
+               <i style="font-size:15px"><p style="color: rgb(244, 240, 240)"><b>Artificial Flora</b></p></i>
+            </a>
+            <a class="nav-item nav-link"
+               routerLink="/category/3">
+               <i style="font-size:15px"><p style="color: rgb(244, 240, 240)"><b>Painting</b></p></i>
+            </a>
+        </div>
+        <div class="navbar-nav ml-auto">
+            <a *ngIf="!currentUser || currentUser.role == Role.Customer"
+                    class="nav-item nav-link " routerLink="/cart" style="font-size:15px; color: rgb(244, 240, 240);">
+                <i class="fas fa-shopping-cart"></i>
+                Cart
+            </a>
+            <div class="navbar-nav" *ngIf="currentUser && currentUser.role == Role.Manager">
+                <a class="nav-item nav-link"  routerLink="/discount" style="font-size:15px; color: rgb(244, 240, 240);">Discount</a>
+                <a class="nav-item nav-link" (click)=getUsers() routerLink="/admin/user" style="font-size:15px; color: rgb(244, 240, 240);">Users</a>
+                <a class="nav-item nav-link" routerLink="/seller/product" style="font-size:15px; color: rgb(244, 240, 240);">Stocks</a>
+            </div>
+            <div class="navbar-nav" *ngIf="currentUser && currentUser.role == Role.Customer">
+                <a class="nav-item nav-link"  routerLink="/wishlist" style="font-size:15px; color: rgb(244, 240, 240);">Wishlist</a>
+            </div>
+            <ng-container *ngIf="currentUser; else noUser">
+                
+               <!-- <a class="nav-item nav-link"  routerLink="/discount">Discount</a>
+                <a class="nav-item nav-link" (click)=getUsers() routerLink="/admin/user">Users</a>
+                <a class="nav-item nav-link" routerLink="/seller/product">Stocks</a> -->
+                <a class="nav-item nav-link " routerLink="/order" style="font-size:15px; color: rgb(244, 240, 240);">
+                    <i class="fas fa-list-ul"></i>
+                    Orders
+                </a>
+                <a class="nav-item nav-link " routerLink="/profile" style="font-size:15px; color: rgb(244, 240, 240);">
+                    {{name}}
+                </a>
+                <a class="nav-item nav-link " (click)="logout()" routerLink="/login" [queryParams]="{logout: true}" style="font-size:15px; color: rgb(244, 240, 240);">
+                    Sign Out
+                </a>
+            </ng-container>
+            <ng-template #noUser>
+                <a class="nav-item nav-link " routerLink="/login" style="font-size:15px; color: rgb(244, 240, 240);">
+                    Sign In
+                </a>
+                <a class="nav-item nav-link " routerLink="/register" style="font-size:15px; color: rgb(244, 240, 240);">
+                    Sign Up
+                </a>
+            </ng-template>
+            
+            </div>
+    </div>
+</nav>
